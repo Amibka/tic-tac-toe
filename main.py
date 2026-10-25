@@ -1,14 +1,11 @@
 from board import Board
-from game import request_move
+from game import Game
 
 
 def main():
     board = Board()
-    board.display()
-
-    request_move(board, 'X')
-
-    board.display()
+    game = Game(board)
+    game.play()
 
 
 if __name__ == '__main__':
