@@ -42,6 +42,8 @@ class Board:
     def check(self):
         if self.check_winner():
             return "win"
+        if self.check_draw():
+            return "draw"
         return False
 
     def check_winner(self):
@@ -59,3 +61,9 @@ class Board:
             return True
 
         return False
+
+    def check_draw(self):
+        for row in self._board:
+            if '.' in row:
+                return False
+        return True

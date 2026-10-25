@@ -30,8 +30,16 @@ class Game:
         while True:
             self.board.display()
             self.request_move()
-            if self.board.check():
+
+            status = self.board.check()
+            if status == "win":
                 self.board.display()
                 print(f"Победил игрок {self.current_player}!")
                 break
+
+            if status == "draw":
+                self.board.display()
+                print("Ничья!")
+                break
+
             self.change_player()
