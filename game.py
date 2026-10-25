@@ -1,3 +1,6 @@
+from board import Board
+
+
 class Game:
     def __init__(self, board):
         self.board = board
@@ -18,7 +21,6 @@ class Game:
                 continue
 
             if self.board.make_move(x - 1, y - 1, self.current_player):
-                self.change_player()
                 return
 
             print('Недопустимый ход: проверьте координаты, клетку и символ.')
@@ -28,3 +30,8 @@ class Game:
         while True:
             self.board.display()
             self.request_move()
+            if self.board.check():
+                self.board.display()
+                print(f"Победил игрок {self.current_player}!")
+                break
+            self.change_player()

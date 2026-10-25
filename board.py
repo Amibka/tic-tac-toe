@@ -38,3 +38,24 @@ class Board:
     @property
     def cells(self):
         return self._board
+
+    def check(self):
+        if self.check_winner():
+            return "win"
+        return False
+
+    def check_winner(self):
+        for i in range(3):
+            if self._board[i][0] == self._board[i][1] == self._board[i][2] != '.':
+                return True
+
+            if self._board[0][i] == self._board[1][i] == self._board[2][i] != '.':
+                return True
+
+        if self._board[0][0] == self._board[1][1] == self._board[2][2] != '.':
+            return True
+
+        if self._board[0][2] == self._board[1][1] == self._board[2][0] != '.':
+            return True
+
+        return False
